@@ -6,19 +6,25 @@ const movieSelect = document.getElementById('movie');
 
 let ticketPrice = parseInt(movieSelect.value);
 
-function increaseSeatCount () {
+function increaseTotalCount () {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
-    count.innerText = selectedSeats.length;
-    total.innerText = ticketPrice * selectedSeats.length;
+    const seatLength = selectedSeats.length;
+
+    count.innerText = seatLength;
+    total.innerText = ticketPrice * seatLength;
 }
+
+movieSelect.addEventListener('change', (e) => {
+    ticketPrice = parseInt(e.target.value);
+    increaseTotalCount();
+});
 
 container.addEventListener('click', (e) => {
     if (e.target.classList.contains('seat') && !(e.target.classList.contains('occupied'))) {
         e.target.classList.toggle('selected');
-        increaseSeatCount();
+        increaseTotalCount();
     }
-
 });
 
 
