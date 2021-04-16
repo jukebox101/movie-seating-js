@@ -4,6 +4,10 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
+fetch('https://api.themoviedb.org/3/movie/76341?api_key=2a92c440dec247ecd8c1885cabc0cd06')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
 populateUI();
 
 let ticketPrice = parseInt(movieSelect.value);
